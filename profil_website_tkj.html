@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKJ SMK Ma'arif NU 1 Rawalo</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome v6.4.0 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 5%;
+            min-height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5rem;
+            line-height: 1.2;
+            cursor: pointer;
+        }
+        
+        .logo i {
+            font-size: 1.6rem;
+            margin-bottom: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+            margin: 0; 
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--text-light); 
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            font-size: 1rem;
+            white-space: nowrap; 
+        }
+
+        .nav-link:hover { color: var(--primary); }
+        
+        .nav-link.active {
+            color: var(--primary); 
+            border-bottom: 2px solid var(--primary); 
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        main {
+            margin-top: 70px;
+            min-height: calc(100vh - 70px);
+        }
+
+        .content-section {
+            display: none !important;
+            opacity: 0;
+        }
+
+        .content-section.active-section {
+            display: block !important;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero / Beranda */
+        .beranda-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: calc(100vh - 70px);
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0yuSBRj3mzWIgngW9IX48qJhHHH7pIFa3tUCj1n_7O1b-hHS0k8epLIjjqUrSCfVilf1FjcLJVe3NwVOtQqlo0ZbP8AkBBkBpB-JNzsAa25Z0HaCoLoIsHfqto8zPKaA7AQfhpX0O1Mi3pBVpeyG4lcHJlOASJ_9FzUAREot1u36CnprJOTcj4MmBo68/s1280/WhatsApp%20Image%202026-08-26%20at%2008.08.58.jpeg') center/cover no-repeat;
+            color: var(--bg-white);
+            padding: 2rem;
+        }
+
+        .beranda-wrapper h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+        .beranda-wrapper h2 { font-size: 1.8rem; font-weight: 400; margin-bottom: 1.5rem; color: #e2e8f0; }
+        .beranda-wrapper p { max-width: 600px; margin: 0 auto 2rem auto; color: #cbd5e1; font-size: 1.1rem; }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 999px;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+        }
+        .btn-primary:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
+
+        /* Section Commons */
+        .section-padding { padding: 4rem 5%; }
+        .section-title { text-align: center; margin-bottom: 3rem; color: var(--primary); font-size: 2.2rem; }
+
+        /* CSS Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        .card-img { width: 100%; height: 210px; object-fit: cover; }
+        .card-body { padding: 1.5rem; }
+        .card-title { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: 600; }
+        .card-text { color: var(--text-light); font-size: 0.95rem; }
+
+        /* Profile Section */
+        .profile-content { background: var(--bg-white); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow); margin-bottom: 2rem; }
+        .profile-content h3 { color: var(--primary); margin-bottom: 1rem; font-size: 1.4rem; }
+        
+        .visi-misi-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Pengajar Cards */
+        .teacher-card { text-align: center; padding: 2rem; }
+        .teacher-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.2rem auto;
+            border: 4px solid var(--primary);
+            box-shadow: var(--shadow);
+        }
+        .badge {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.25rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact & Maps */
+        .contact-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        .map-container iframe { width: 100%; height: 380px; border: none; border-radius: 12px; }
+        .contact-info { background: var(--bg-white); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow); }
+        .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+        .contact-icon { font-size: 1.4rem; color: var(--primary); margin-top: 0.2rem; width: 30px; text-align: center; }
+        
+        /* Footer */
+        footer { background-color: var(--text-main); color: white; text-align: center; padding: 1.5rem; font-size: 0.9rem; }
+
+        @media (min-width: 768px) {
+            .visi-misi-grid { grid-template-columns: 1fr 1fr; }
+            .contact-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 1024px) {
+            .navbar { padding: 0.5rem 3%; }
+            .nav-links { gap: 1.2rem; }
+            .nav-link { font-size: 0.95rem; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { justify-content: space-between; }
+            .hamburger { display: block; }
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-white);
+                flex-direction: column;
+                gap: 0;
+                box-shadow: var(--shadow-lg);
+                display: none;
+                align-items: flex-start; 
+            }
+            .nav-links.show { display: flex; }
+            .nav-link { padding: 1rem 5%; border-bottom: 1px solid var(--bg-light); width: 100%; white-space: normal; }
+            .nav-link.active { border-bottom: 1px solid var(--primary); background-color: #f0f9ff; }
+            .beranda-wrapper h1 { font-size: 2.2rem; }
+            .beranda-wrapper h2 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo" onclick="switchTab('beranda')">
+            <i class="fa-solid fa-network-wired"></i> <span>TKJ MANUSARA
+            </span>
+        </div>
+        <div class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a class="nav-link active" data-target="beranda">Beranda</a></li>
+            <li><a class="nav-link" data-target="fasilitas">Fasilitas</a></li>
+            <li><a class="nav-link" data-target="galeri">Galeri</a></li>
+            <li><a class="nav-link" data-target="profile">Profile</a></li>
+            <li><a class="nav-link" data-target="pengajar">Pengajar</a></li>
+            <li><a class="nav-link" data-target="tentang-kami">Tentang Kami</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="beranda" class="content-section active-section">
+            <div class="beranda-wrapper">
+                <div>
+                    <h1>Selamat Datang di TKJ</h1>
+                    <h2>SMK Ma'arif NU 1 Rawalo</h2>
+                    <p>Mencetak generasi unggul, kompeten, dan siap kerja di bidang Teknik Komputer dan Jaringan. Bergabunglah bersama kami untuk menguasai teknologi masa depan.</p>
+                    <button class="btn-primary" onclick="triggerProfileTab()">Pelajari Lebih Lanjut</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="fasilitas" class="content-section">
+            <div class="section-padding">
+                <h2 class="section-title">Fasilitas Jurusan</h2>
+                <div class="grid-3">
+                    <div class="card">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvUYy_bj7dY3egcH0oCvCa7KQihhNvqkK0UyONAJ4h2kiKKGgWuC_kDSrn-12fYtpAOusGN80zU3J1GXRGVvgZcMDgvISrB8T6VhFBGeb2TZEO8-9Osr_JZSSI3Gf-wQaFglcW3vah3-AfuGpH0Yq1Pvo8omjeQkx01IJ_JdMvNLe_BnKm9Dhbedh6ZKM/s1280/WhatsApp%20Image%202026-09-07%20at%2015.32.58.jpeg
+                        " alt="Laboratorium Komputer" class="card-img" onerror="this.src='https://placehold.co/600x400/0ea5e9/ffffff?text=Lab+Komputer'">
+                        <div class="card-body">
+                            <h3 class="card-title">Laboratorium Komputer</h3>
+                            <p class="card-text">Ruangan ber-AC dilengkapi komputer spesifikasi tinggi untuk menunjang kegiatan pembelajaran dan praktikum secara optimal.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://cdn.phototourl.com/free/2026-09-07-65aa54ea-c0ad-42f4-8694-905d6883ccc0.jpg" alt="Personal Computer" class="card-img" onerror="this.src='https://placehold.co/600x400/0ea5e9/ffffff?text=Personal+Computer'">
+                        <div class="card-body">
+                            <h3 class="card-title">Personal Computer (PC)</h3>
+                            <p class="card-text">Unit komputer standar industri yang digunakan siswa untuk praktik perakitan komponen, instalasi sistem operasi, dan troubleshooting hardware.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://cdn.phototourl.com/free/2026-09-07-57cdac6e-dfec-4f9c-94a5-94061681a3e4.jpg" alt="Switch & Router Jaringan" class="card-img" onerror="this.src='https://placehold.co/600x400/0ea5e9/ffffff?text=Switch+Jaringan'">
+                        <div class="card-body">
+                            <h3 class="card-title">Switch & Router Network</h3>
+                            <p class="card-text">Perangkat Mikrotik dan Cisco Switch modern untuk pengujian topologi jaringan LAN, VLAN, serta Routing Management.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRbANaFQT4d8OuOdmlIy69lmz3oqlHoSe_eqB8pjXg_l1GZdm6kUefbnEVTeVRizvw-OChVEhNdcFjv3dBOfap1X0Km98_GvykmI9JTPqctPeMyDs3FVLL9zS4UB5uAnnBuvrZabxi224PuNcfc4ZLRlfWzep1knsH2qxZ0Aklo87XFYCB5S_KaqGIG14/s1280/87e445c0-2e15-4382-b6a9-2de668e7f788.jpg
+                        " alt="Routerboard Mikrotik" class="card-img" onerror="this.src='https://placehold.co/600x400/0ea5e9/ffffff?text=Routerboard+Mikrotik'">
+                        <div class="card-body">
+                            <h3 class="card-title">Routerboard Mikrotik</h3>
+                            <p class="card-text">Perangkat router Mikrotik untuk manajemen bandwidth, konfigurasi routing, firewall, serta manajemen jaringan hotspot.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRo8B79_zxVAnwQbncITsKFh_pRa65TKhLUwQaBL82f-Yv7gVBU-c7VxsZpIJN2igPf9_6oH3p1h7AUdvPYsYfUFWNwibaZqUD3Vvo5fU_pNH5w12qslUTMYVcwYi8eSptEdHQIsRabpczHf1b1cC1cmqx3XDLK6HkOGD1itWvD5lPyZvpQApKR0UPknk/s1280/651534ad-f539-4de9-872f-aab20aeea42a.jpg
+                        " alt="Air Conditioner (AC)" class="card-img" onerror="this.src='https://placehold.co/600x400/0ea5e9/ffffff?text=Air+Conditioner'">
+                        <div class="card-body">
+                            <h3 class="card-title">Air Conditioner (AC)</h3>
+                            <p class="card-text">Fasilitas pendingin ruangan AC di laboratorium untuk menjaga performa perangkat komputer dan kenyamanan saat kegiatan praktikum.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9g6UtwCwCmJjdosTqMKmDa-dc3OMnAXt85xXJqC2Xowmy-tOo8aadRD2KNW6GMXqkJJhUiD6glywh_3qcaaSi3ri7h2-TX6kMvmdUXbs9oLRyvWx8eSRamJDKotvjImT92t5g7wiUJkRCMiVkoOIEjt_v1-BOMGeATadgCbbxQ_b7wZbaApAj_oXSPOA/s1280/2a5c83c6-1fba-4f4d-b2c7-b0ce2ecf5f28.jpg
+                        " alt="Printer & Scanner" class="card-img" onerror="this.src='https://placehold.co/600x400/0ea5e9/ffffff?text=Printer'">
+                        <div class="card-body">
+                            <h3 class="card-title">Printer</h3>
+                            <p class="card-text">Perangkat pencetak dokumen untuk menunjang kegiatan pencetakan laporan praktikum, modul pembelajaran, dan administrasi siswa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeri" class="content-section">
+            <div class="section-padding">
+                <h2 class="section-title">Galeri Kegiatan</h2>
+                <div class="grid-3">
+                    <div class="card">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkdr9OZ4Ps0-scn2ybEbGHXuQUxUbidRDSlzM8KtIMU01h3QY9bBlFAVdSGWSpajhFkL1n-iV-18DCHeWKCjy2PLmJQKc61S7vXeBIp2eBmk6VGpk1ddHEZF8oKnrrpTrNn6Z3fBhTqlZZaaXq4QSDIKc19RbCYQkka0eqhbicifLZPqwO8Ers2yywtmc/s1280/WhatsApp%20Image%202026-09-07%20at%2015.33.02%20(1).jpeg
+                        " alt="Praktikum Jaringan" class="card-img" onerror="this.src='https://placehold.co/600x400/0ea5e9/ffffff?text=Praktikum+Jaringan'">
+                        <div class="card-body">
+                            <h3 class="card-title">Praktikum Network Cable</h3>
+                            <p class="card-text">Siswa sedang berlatih crimping kabel UTP dan melakukan pengujian LAN Tester.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgC97YDEV4rdmdU7MNreA6zs2ZeEHHasXSTRkM7V0l1PyZumwzDR3JneiSNe341XKpo3Si89wyvRSI9KL_pBX2fLLeNEeyUDwC4lJ17lqxYqJIbtl5w67hz5KW66psaIRG76aepm0wejYS2THXdlryWbxtHm5wtnc_i-IPrudfa1WLXp7qGViiwGbWaefI/s1280/WhatsApp%20Image%202026-09-07%20at%2015.33.01.jpeg
+                        0" alt="Perakitan Komputer" class="card-img" onerror="this.src='https://placehold.co/600x400/0ea5e9/ffffff?text=Perakitan+PC'">
+                        <div class="card-body">
+                            <h3 class="card-title">Perakitan & Troubleshooting PC</h3>
+                            <p class="card-text">Kegiatan bongkar pasang hardware komputer dan pengujian performa komponen.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikdQiSBxVbayMDnvjYsXDvm7Ksvk96c_Qoh2Ff5c09qtq8SHPawEbTZEYeAE5B10affiYSQrajq4GWNaBWPZ-tK89VHJ2AMXT9dLBqYdFmveaRUmbPHEesZBsSNJLTHvu6AUt8mMo5yQA65WwIPzuYw5d-_uwTzsRiJ82N4wsj6vXFGtNIDwzC8T9oq4w/s1280/WhatsApp%20Image%202026-09-07%20at%2015.33.02%20(2).jpeg
+                        " alt="Sertifikasi Mikrotik" class="card-img" onerror="this.src='https://placehold.co/600x400/0ea5e9/ffffff?text=Uji+Kompetensi'">
+                        <div class="card-body">
+                            <h3 class="card-title">Uji Kompetensi Keahlian (UKK)</h3>
+                            <p class="card-text">Pelaksanaan ujian praktik keahlian jaringan bersama penguji eksternal industri.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="profile" class="content-section">
+            <div class="section-padding">
+                <h2 class="section-title">Profil Jurusan TKJ</h2>
+                
+                <div class="profile-content">
+                    <h3>Tentang Jurusan</h3>
+                    <p>Teknik Komputer dan Jaringan (TKJ) SMK Ma'arif NU 1 Rawalo merupakan program keahlian yang membekali peserta didik dengan keterampilan, pengetahuan, dan sikap profesional di bidang teknologi informasi, jaringan komputer, sistem administrator, serta komunikasi data.</p>
+                </div>
+
+                <div class="visi-misi-grid">
+                    <div class="profile-content">
+                        <h3><i class="fa-solid fa-bullseye"></i> Visi</h3>
+                        <p>"Mewujudkan Lembaga Pendidikan yang Mandiri, Inovatif dan Berkarakter"</p>
+                    </div>
+
+                    <div class="profile-content">
+                        <h3><i class="fa-solid fa-list-check"></i> Misi</h3>
+                        <ul style="padding-left: 1.2rem; list-style-type: disc;">
+                            <li>Menanamkan jiwa kewirausahaan sesuai dengan kompetensi di bidangnya</li>
+                            <li>Membentuk peserta didik berjiwa kreatif, inovatif, disiplin dan profesional dalam dunia kerja sehingga menjadi sekolah rujukan (best practices school) di Jawa Tengah</li>
+                            <li>Menumbuhkan semangat keunggulan secara intensif dan daya saing yang sehat kepada seluruh warga sekolah baik prestasi akademik maupun non akademik</li>
+                            <li>Mendorong, membantu dan memfasilitasi peserta didik untuk mengembangkan kemampuan, bakat, dan minatnya sehingga dapat berinovasi</li>
+                            <li>Menghasilkan karya unggulan dan tepat guna dalam persaingan global</li>
+                            <li>Mengembangkan dan mengoptimalkan hubungan kerjasama (networking) dengan DU/DI serta masyarakat untuk meningkatkan keterkaitan dan kesepadanan</li>
+                            <li>Menumbuh kembangkan sikap, perilaku, dan amaliah yang berlandaskan agama Islam AHLUSSUNNAH WAL JAMAAH ANNADHLIYAH di sekolah, keluarga dan masyarakat selaku insan muslim yang muttaqin</li>
+                            <li>Membentuk peserta didik peduli lingkungan/masyarakat yang memiliki budaya hidup damai, bersih dan sehat</li>
+                            <li>Menanamkan Penguatan Profil Pelajar Pancasila dan Budaya Kerja</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pengajar" class="content-section">
+            <div class="section-padding">
+                <h2 class="section-title">Tenaga Pengajar</h2>
+                <div class="grid-3">
+                    <div class="card teacher-card">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_LqM1XpRsqtrKwxbzjVwuP6ByHK5HmrZKn-txA6nniLZrE1qUgHLbWinDe409nYNX039ebQdxgFTTVHQN8rDs6FEiK72lno22F35KvwQkVQKgT_YVe43bdTQsCPKBCzw5GFWgWchQAWolLWU_wMrI4w3OPUEiERq963eHYBYK1iF_TBVnxUpL-ExiJM8/s320/WhatsApp%20Image%202026-09-07%20at%2015.32.59.jpeg
+                        " alt="Guru TKJ" class="teacher-img" onerror="this.src='https://placehold.co/300x300/0ea5e9/ffffff?text=Guru+TKJ'">
+                        <span class="badge">Kepala Program Studi</span>
+                        <h3 class="card-title">Joni Sahsongko, S.Kom</h3>
+        
+                    </div>
+                    <div class="card teacher-card">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjB5mA8n_EgrI12rrluWVLyvOcMoFG13DWm-BGtE8VJenbOUdhFauypK2V2oVK8ydiEY1KBsEqN2bQRp0PyW6oi6RmmAfy0L6xYAFnrRLe7-UNPjV6YsabJCqraRLJcqwrgNBBLJg2g_FIWgA2rKGMfV94rimlTwhiqXbuLiXbUHQ0onc-XMqcv3VWb1dY/s1600/WhatsApp%20Image%202026-09-07%20at%2015.33.00%20(1).jpeg
+                        " alt="Guru TKJ" class="teacher-img" onerror="this.src='https://placehold.co/300x300/0ea5e9/ffffff?text=Guru+TKJ'">
+                        <span class="badge">Tenaga Pengajar</span>
+                        <h3 class="card-title">Faiz Riyadi S.Kom</h3>
+                
+                    </div>
+                    <div class="card teacher-card">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgXGKpU7_7Ar4lqlTo2q96bXVqBJD-2ExT_B5SQX8YeySVQu6okIZGBGMpo4Yty9vZLZZxENk3mRfRBJjMXMVlA1JYI21CEDdZ2Sf5g1D0GnplAY-0bu2ErISWtWoqVd4x4ntW0ZkKZoU8vF7Z8GiszWwBWgIOzERtjN-Wp0Ty0N8__ZROVhRwteE1WvSs/s320/WhatsApp%20Image%202026-09-07%20at%2015.32.58%20(1).jpeg" alt="Guru TKJ" class="teacher-img" onerror="this.src='https://placehold.co/300x300/0ea5e9/ffffff?text=Guru+TKJ'">
+                        <span class="badge">Tenaga Pengajar</span>
+                        <h3 class="card-title">Anggi Latifah Pramudita S.Kom</h3>
+                        
+                
+                </div>
+            </div>
+        </section>
+
+        <section id="tentang-kami" class="content-section">
+            <div class="section-padding">
+                <h2 class="section-title">Hubungi Kami</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fa-solid fa-location-dot contact-icon"></i>
+                            <div>
+                                <strong>Alamat Sekolah:</strong>
+                                <p>Jl. Raya Rawalo No. 01, Rawalo, Kabupaten Banyumas, Jawa Tengah</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-envelope contact-icon"></i>
+                            <div>
+                                <strong>Email:</strong>
+                                <p>info@smkmaarifnu1rawalo.sch.id</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-phone contact-icon"></i>
+                            <div>
+                                <strong>Telepon / WhatsApp:</strong>
+                                <p>+62 812-3456-7890</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-clock contact-icon"></i>
+                            <div>
+                                <strong>Jam Operasional:</strong>
+                                <p>Senin - Sabtu: 07.00 - 15.30 WIB</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://maps.google.com/maps?q=Rawalo%20Banyumas&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" title="Lokasi Sekolah"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Teknik Komputer dan Jaringan - SMK Ma'arif NU 1 Rawalo. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        /**
+         * Pindah ke tab target berdasarkan ID
+         * @param {string} targetId - ID dari section yang ingin ditampilkan
+         */
+        function switchTab(targetId) {
+            // Un-hide active section
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active-section');
+            });
+
+            // Highlight active navbar link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if (link.getAttribute('data-target') === targetId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // Show selected section
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.add('active-section');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Close mobile navigation drawer if open
+            const navLinksContainer = document.getElementById('nav-links');
+            if (navLinksContainer) {
+                navLinksContainer.classList.remove('show');
+            }
+        }
+
+        /**
+         * Global function dipanggil dari tombol 'Pelajari Lebih Lanjut' di Beranda
+         */
+        function triggerProfileTab() {
+            switchTab('profile');
+        }
+
+        // Initialize event listeners when DOM content is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const hamburger = document.getElementById('hamburger');
+            const navLinksContainer = document.getElementById('nav-links');
+
+            // Set event handler for nav link clicks
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    if (target) {
+                        switchTab(target);
+                    }
+                });
+            });
+
+            // Mobile menu hamburger toggle
+            if (hamburger && navLinksContainer) {
+                hamburger.addEventListener('click', function() {
+                    navLinksContainer.classList.toggle('show');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
